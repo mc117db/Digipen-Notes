@@ -75,5 +75,16 @@ each other, whichs makes changes to each system propagate locally, not to other 
   - Registers to a source object to receive messages.
   - Each object has a list of interested objects to which it will send messages.
   - Common use in game engines.
+  - Extremely fast if implemented well
+  - Requires alot of implementation, in C++, to get it all working nicely
+  - Geenrally implemented as a linked list of "binding" objects, or even vectors of objects.
+    - Interface
+      - Observer interface
+        - HandleMessage()
+      - Observable interface
+        - RegisterObserver()
+        - SendToObservers()
+        - UnregisterObservers()
+  - Observer objects should automatically unregister themselves.
 
 
