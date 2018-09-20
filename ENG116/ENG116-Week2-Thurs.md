@@ -31,6 +31,8 @@
             - Gives the main character goals to pursue.
               - Conscious goals
               - Unconscious goals
+                - Goals that discovered during the processes of the story and
+                  is transformed.
             - May be a superficial goal that leads to more concrete goals.
             - The trigger point of the "adventure"
           - Rising Action
