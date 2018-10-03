@@ -21,7 +21,7 @@
 
 # Monolithic OS architecture
 ![Monolithic Architecture](https://i.imgur.com/jyeCLkK.jpg)
-- Everything almost runs in knerl model.
+- Everything almost runs in kernel model.
 - Example: Linux (Older version) - Newer version of Linux goes by a hybrid approach (Monolithic with Microkernel)
   - Can be though of one single file where every subsystems exist within the system.
   - A subsystem is a set of system calls/system procedures.
@@ -61,4 +61,27 @@
 
 #Questions
 - Is OS using the CPU at all times?
+  - Ans: No, when you boot up your OS, CPU wil stay idle and waits for user input.
 - After booting and initialization, what are the circumstances that would cause OS code to use the CPU?
+  - Ans: When there is a process that is created and running.
+
+# Processes
+## What is processes?
+- Running program or program in execution.
+  - Running program = .exe loaded into memory.
+  - Whats the difference between a .exe in disk and a .exe that is running
+  - Running program is loaded by the Loader
+    - Running program is allocated its stack, heap
+    - Program Counter will be pointing to some instruction in the running program
+    text (where instructions reside) segment.
+  - A Running Program has the following things.
+    - Stack, Heap, Text, Data.
+  - A Running Program is also known as a running process.
+    - TL:DR Process = Active, Program = Passive.
+
+- Processes are the basis for all computation
+  - A Program is considered more efficient, the less processes it uses.
+  - Process is a **unit of work**
+  - Let say you have a program, your user program might have 1 or more processes.
+    - Those processes are created and resides in the kernel space.
+      - Every process have stack/heap/text/data.
