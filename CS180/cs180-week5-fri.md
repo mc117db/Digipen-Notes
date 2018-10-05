@@ -1,0 +1,75 @@
+# Week 5 - CS180 (Friday)
+## Topic: Processes
+---
+## Context of Process
+- A context of a Process is a snapshot of the CPU registers when its running.
+- When the CPU handles a ISR, it will save the CPU register values before it proceeds.
+- When it returns back from the ISR, it will set the Program Counter (PC) back to the address of the next instruction it was going to execute and refreshes the registers with the previously saved state.
+- Question: Where is the context is saved? What is saved?
+  - The context of the process will be saved in its own stack.
+    - Floating Point Registers will be pushed
+    - General Purpose Registers will be pushed
+    - Finally the PC will be pushed as well.
+    - The Stack Pointer will be pointing to the top of the stack.
+- The Stack Pointer value of the (to be switched from) process then needs to be saved before switching to another process.
+
+## Process Control Block
+- That SP value is saved in a data structure called the Process Control Block (PCB).
+- Process Control Block
+  - Every process will have one PCB.
+  - PCBs are maintained by the kernel.
+  - User cannot access this PCB, only the OS Kernel know the handle to these PCB
+  - The PCB itself is implemented as a Doubly Linked List.
+    - Inside a node of the PCB we have the following things
+      - Unique ID
+        - Creating a new process will assign a new ID to it (aka. pid)
+      - State
+        - What state the process is in the kernel.
+          - Run, Wait, Terminal, Ready.
+      - Program Counter
+        - Address of next instruction of the process
+      - Stack Pointer
+        - Points to the top of the stack of that process.
+      - CPU Regs
+        - GPRs, FPRs etc.
+      - CPU Scheduling Information.
+        - Policies
+        - Priority Levels of Process.
+      - Account Info
+        - User which process belongs to
+        - CPU usage
+        - Memory usage
+        - Time limit of the process to run.
+      - Memory Management Information (Not important now)
+      - I/O status information
+        - List of I/O device attached to the process
+        - List of Files etc.
+
+## Process Scheduler
+- Part of OS
+  - When a process is created the following is created
+    - The PID is assigned
+    - The PCB is allocated.
+      - However the process stack/heap is not allocated yet
+    - The moment the PCB is initialized with all of the required values
+    - The process will be in the ready state.
+      - The ready state
+        - The .exe is loaded
+        - The content is ready to run.
+        - PCB is initialized, has all information in the process control block.
+        - The PCB is placed into the ready queue.
+- Ready Queue
+  - is a queue of process control blocks.
+  - Queue is FIFO (First in First Out).
+  - The scheduler will take a PCB from the Ready Queue and runs the process. **(Ready -> Running)**
+- When there is a interrupt, the PCB of the running process will be put back into the ready queue (after all the context saving is done) before the ISR is executed.  **(Running -> Ready)**
+- When a process is running, the process can be put into a **waiting** state when there is a IO request. **(Running -> Waiting)**.
+  - When the Process is waiting for I/O it will be placed into the I/O queue.
+  - If the Process is waiting for Events it will be placed into the Event queue.
+    - When the event/IO is received and is completed, the waiting process will be placed back into the ready queue **(Waiting -> Ready)**.
+- Where is Context Saving / Loading done?
+  - Context Saving
+    - Running to Ready
+    - Running to Waiting
+  - Context Loading
+    - Ready to Running
