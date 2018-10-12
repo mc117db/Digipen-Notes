@@ -72,7 +72,7 @@ int main(void) {
   - If there is an error, the execl will fail and will execute the next instruction after the exec( ) command.
   - If you include <errno.h>, you will find the associated list of error codes.
 
-## Grep in from Linux
+## Grep from Linux
 - Grep is an .exe that is present in cygwin/linux environments.
 - Grep command is used to search for text. It searches the given file for lines containing a match to the given strings or words.
 ~~~
@@ -103,4 +103,19 @@ int main()
   execl("/bin/grep.exe",argv};
   printf("OPPS")
 }
+~~~
+
+## Environment variable
+- Environment variable is maintained by the OS
+- If you run an exe files, it will use the environment variable from the OS
+- If you want to use a custom environment variable, you need to define it yourself.
+
+~~~
+  char* envp[] = {
+    "Home=/",
+    "TZ=UTC+0",
+    NULL
+  }
+
+  execle("ex1.exe",envp); // I'm passing in a custom environment to this program
 ~~~
