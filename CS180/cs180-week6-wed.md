@@ -23,6 +23,9 @@
 ## WIFEXITED(status)
 - Macro that checks if an int contains an exit code.
 
+## WEXITSTATUS(status)
+- Macro that checks for the return value of the child process.
+
 ~~~
 #include <unistd.h>
 #include <sys/wait.h>
