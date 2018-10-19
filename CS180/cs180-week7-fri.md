@@ -42,5 +42,30 @@ observe the printing)
 - The dup() system call duplicates the given file descriptor using the lowest available file descriptor number.
 ![Dup](https://i.imgur.com/JRiZt28.jpg)
 
-
-
+## Shared Memory
+- The basic idea is two processes shared a common memory region. This memory region does not belong to either process (not in the program) but somewhere that is allocated by the kernel.
+- Process A and Process B has to have a common key.
+- When this key is passed to a system call shmget()
+  - shmget(key, size of memory, permission flags)
+  - shmget will return the shared memory id (smid)
+- You need to attach Process A to the shared memory
+  - [shmat](https://linux.die.net/man/2/shmat) (shared memory attach)
+  - void* **shmat** (smid[thats your id], ... some other variables not important now); 
+  - shmat will return the address of the shared memory.
+  - shmctl(...) Shared Memory Control
+    - Will delete the shared memory.
+    - Can be called by either of the process.
+## Queue
+- The basic idea is that there is a FIFO data structure that contains "messages" that will allow processes to send messages to another.
+- The queue itself have an id which determines where the messages are routed to which process.
+___
+## Tibits
+- Permission flags
+  - is an octal number with 3 groups of 3 digits.
+  - Each group corresponds to the following. Owner, Group, User
+  - Each number of the 3 digit group corresponds to the following.
+    - Read, Write, X-ecute
+  - So the OCT number 666  (110 110 110 in binary) corresponds to.
+    - Owner can read,write but cannot execute.
+    - Group can read,write but cannot execute.
+    - User can read,write but cannot execute.
