@@ -48,6 +48,8 @@ observe the printing)
 - When this key is passed to a system call shmget()
   - shmget(key, size of memory, permission flags)
   - shmget will return the shared memory id (smid)
+    - If the shared memory already exist, it will return the id.
+    - If not, it will create a new shared memory block and return the id.
 - You need to attach Process A to the shared memory
   - [shmat](https://linux.die.net/man/2/shmat) (shared memory attach)
   - void* **shmat** (smid[thats your id], ... some other variables not important now); 
