@@ -1,4 +1,4 @@
-# Week 7 - CS180 (Wednesday)
+fri# Week 7 - CS180 (Wednesday)
 ## Topic: Context Switching
 ---
 ## What is saved for Context Switching
