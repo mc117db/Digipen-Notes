@@ -1,6 +1,6 @@
 # Week 6 - GAM200 (Tuesday)
 ## Topic: Game Physics
-- Prerequisties: CS230
+- Prerequisites: CS230
 ---
 ## Game Physics
 - Physic Based Motion
@@ -15,14 +15,14 @@
 - Continuous Physics
   - Look ahead and predict whether objects going to collide.
     - Good for small fast moving objects
-  - Search for collision in continous time and find expected time of impacet for each object pair
+  - Search for collision in continuous time and find expected time of impact for each object pair
   - Determine the first colliding pair, move forward to that time and resolve collision
   - Problems
     - Expensive and complex.
 - Discrete Physics
   - Objects moved via basic Newtonian physics by a time interval (a frame)
   - Collision are detected at sample intervals in time
-  - Inaccurate but realistic lookking
+  - Inaccurate but realistic looking
   - Very fast.
   - Problems
     - Objects can tunnel (miss collisions when object moves too fast).
@@ -35,7 +35,7 @@
           - Increase collision data size eg. Bounding Rectangle.
   - Favour Discrete Physics when...
     - In cases where you don't need accuracy
-    - Much faster and simpler than continous
+    - Much faster and simpler than continuous
     - Result is good enough.
     - Can be scaled to higher frame-rates
 
@@ -54,7 +54,7 @@
 - Forces determine acceleration
 - Acceleration changes velocity
 - Velocity changes position.
-  - Summining Fofrces
+  - Summing Forces
     - All forces on a body can be summed into a single forces
       - Just add all forces together.
 
@@ -94,9 +94,9 @@
   - Center of mass (affects rotational physics)
 - Directional Form
   - Sum(Forces) = mass * acceleration
-  - Acceleration intergrates velocity
-  - Velocity intergrates position.
+  - Acceleration integrates velocity
+  - Velocity integrates position.
 - Rotational Form
-  - Sum(Torques) = intertia mass * angular accel.
-  - Angular acceleration intergrates angular velocity.
-  - Angular velocity intergrates angle.
+  - Sum(Torques) = inertia mass * angular accel.
+  - Angular acceleration integrates angular velocity.
+  - Angular velocity integrates angle.
